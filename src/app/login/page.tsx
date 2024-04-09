@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
 interface LoginRequest {
   username: string;
   password: string;
@@ -96,6 +98,12 @@ const LoginPage = () => {
           </button>
           {error && <p className="error-message">{error}</p>}
         </form>
+        <div>
+          <p>
+            Don&apos;t have an account?
+            <Link href="/signup">Sign up here</Link>
+          </p>
+        </div>
       </div>
     </>
   );
