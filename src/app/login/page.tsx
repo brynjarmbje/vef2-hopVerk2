@@ -1,28 +1,68 @@
 'use client';
 import { useState } from 'react';
 import axios from 'axios';
-import Router from 'next/router';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+interface LoginRequest {
+  username: string;
+  password: string;
+}
+
+interface LoginResponse {
+  access_token: string;
+  user_id: number;
+  username: string;
+  name: string;
+  profile_picture: string;
+  isAdmin: boolean;
+}
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [accessToken, setAccessToken] = useState('');
+  const router = useRouter(); // Initialize useRouter hook
+
+  useEffect(() => {
+    if (accessToken) {
+      localStorage.setItem('token', accessToken);
+      router.push('/');
+    }
+  }, [accessToken, router]);
 
   const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setError('');
 
     try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/login`,
+      const response = await axios.post<LoginResponse>(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/login/`,
         {
           username,
           password,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          maxBodyLength: Infinity,
         }
       );
-      // Handle your login logic here
-      Router.push('/'); // Redirect to home on success
+      const { access_token } = response.data;
+      if (accessToken) {
+        const userData = {
+          userId: response.data.user_id,
+          username: response.data.username,
+          name: response.data.name,
+          profilePicture: response.data.profile_picture,
+          isAdmin: response.data.isAdmin,
+        };
+        localStorage.setItem('userData', JSON.stringify(userData)); // Store user data as a string
+      }
+      setAccessToken(access_token);
     } catch (err) {
+      console.error(err);
       setError('Login failed, please try again.');
     }
   };
