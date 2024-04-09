@@ -7,7 +7,6 @@ const Navbar = () => {
       <Link href="/movies">Movies</Link>
       <Link href="/signup">Signup</Link>
       <Link href="/login">Login</Link>
-      {/* Add more links as needed */}
     </nav>
   );
 };
