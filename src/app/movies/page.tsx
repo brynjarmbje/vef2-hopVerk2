@@ -11,10 +11,10 @@ const MoviesPage = () => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/movies`
         );
-        console.log(response);
+        //console.log(response);
         setMovies(response.data.movies);
       } catch (err) {
-        // Handle error here
+        console.error(err);
       }
     };
 
