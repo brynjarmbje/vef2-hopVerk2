@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import Router from 'next/router';
-import Navbar from '../src/app/Navbar';
+import Navbar from './Navbar';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');

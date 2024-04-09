@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import RootLayout from '../src/app/layout'; // Import your layout component
+import RootLayout from './layout'; // Import your layout component
 
 import '../src/app/globals.css'; // Ensure the path to globals.css is correct
 
