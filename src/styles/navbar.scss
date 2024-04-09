@@ -1,0 +1,19 @@
+// navbar.scss
+.navbar {
+    background-color: #333; // Dark background for the navbar
+    color: #fff; // White text color
+    display: flex;
+    justify-content: space-around; // Space out the links evenly
+    padding: 1rem 0; // Added some padding above and below
+  
+    a {
+      padding: 1rem 0;
+      color: inherit; // Inherits the white color for links
+      text-decoration: underline; 
+      transition: color 0.3s; // Smooth transition for hover effect
+  
+      &:hover {
+        color: #0070f3; // Change color on hover
+      }
+    }
+  }
