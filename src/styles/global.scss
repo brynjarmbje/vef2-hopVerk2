@@ -22,14 +22,16 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-
-.login-container, .signup-container, .movies-container {
+.login-container,
+.signup-container,
+.movies-container {
   margin: 0 auto;
   padding: 1rem;
   max-width: 400px;
 }
 
-.login-form, .signup-form {
+.login-form,
+.signup-form {
   display: flex;
   flex-direction: column;
 }

@@ -1,22 +1,25 @@
+'use client';
 import { useState } from 'react';
 import axios from 'axios';
 import Router from 'next/router';
-import Navbar from './Navbar';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleLogin = async (event: { preventDefault: () => void; }) => {
+  const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setError('');
 
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/login`, {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/login`,
+        {
+          username,
+          password,
+        }
+      );
       // Handle your login logic here
       Router.push('/'); // Redirect to home on success
     } catch (err) {
@@ -26,7 +29,6 @@ const LoginPage = () => {
 
   return (
     <>
-      <Navbar />
       <div className="login-container">
         <form onSubmit={handleLogin} className="login-form">
           <div className="form-control">
@@ -49,7 +51,9 @@ const LoginPage = () => {
               required
             />
           </div>
-          <button type="submit" className="submit-button">Log in</button>
+          <button type="submit" className="submit-button">
+            Log in
+          </button>
           {error && <p className="error-message">{error}</p>}
         </form>
       </div>
