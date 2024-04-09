@@ -1,6 +1,5 @@
 import axios from 'axios';
-import MoviesPage from '../page';
-import { describe } from 'node:test';
+import '../../../styles/movie.scss';
 
 export async function generateStaticParams() {
   const response = await axios.get(
@@ -18,14 +17,16 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/movies/${slug}`
   );
-  console.log('this is the response from slug', response.data);
+  //console.log('this is the response from slug', response.data);
   return (
-    <div>
+    <div className="movieDetail">
       <h2>Movie Title: {response.data.title}</h2>
       <p> Year : {response.data.year}</p>
       <p> Description : {response.data.description}</p>
       <p> ID : {response.data.id}</p>
-      <p> URL : {response.data.url}</p>
+      <p>
+        URL : <a href={response.data.url}>{response.data.url}</a>{' '}
+      </p>
       <p> Created :{response.data.created} </p>
       <p> Updated : {response.data.updated}</p>
     </div>
