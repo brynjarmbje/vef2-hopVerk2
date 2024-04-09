@@ -28,7 +28,6 @@ const MoviesPage = () => {
       <ul className="movies-list">
         {movies.map((movie: { id: number; title: string; slug: string }) => (
           <li key={movie.id}>
-            {/* Use Next.js Link to navigate to the movie's detail page using its slug */}
             <Link href={`/movies/${movie.slug}`}>{movie.title}</Link>
           </li>
         ))}
