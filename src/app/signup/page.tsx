@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import Router from 'next/router';
-import Navbar from '../../components/Navbar';
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
