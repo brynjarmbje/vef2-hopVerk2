@@ -17,49 +17,40 @@ const LoginPage = () => {
         username,
         password,
       });
-
-      // Assuming the API returns a token on successful login
-      const { token } = response.data;
-
-      // You might want to store the token in a context, redux store, or local storage
-      // For now, we'll just log the user in and redirect to the home page
-      console.log('Login successful:', token);
-      Router.push('/');
+      // Handle your login logic here
+      Router.push('/'); // Redirect to home on success
     } catch (err) {
-      // Handle error responses from the API here
-      setError('Failed to login. Please check your username and password.');
+      setError('Login failed, please try again.');
     }
   };
 
   return (
     <>
       <Navbar />
-      <div >
-        <form onSubmit={handleLogin} >
-          <div>
+      <div className="login-container">
+        <form onSubmit={handleLogin} className="login-form">
+          <div className="form-control">
             <label htmlFor="username">Username</label>
             <input
               id="username"
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              required
             />
           </div>
-          <div>
+          <div className="form-control">
             <label htmlFor="password">Password</label>
             <input
               id="password"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
-          <div>
-            <button type="submit">
-              Log in
-            </button>
-          </div>
-          {error && <p>{error}</p>}
+          <button type="submit" className="submit-button">Log in</button>
+          {error && <p className="error-message">{error}</p>}
         </form>
       </div>
     </>

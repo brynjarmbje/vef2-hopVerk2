@@ -23,3 +23,57 @@ body {
 }
 
 
+.login-container, .signup-container, .movies-container {
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 400px;
+}
+
+.login-form, .signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control {
+  margin-bottom: 1rem;
+}
+
+.form-control label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-control input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-button {
+  padding: 0.5rem;
+  border: none;
+  background-color: #0070f3;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin-top: 1rem;
+}
+
+.movies-list {
+  list-style: none;
+  padding: 0;
+}
+
+.movies-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ccc;
+}

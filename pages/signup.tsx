@@ -1,32 +1,69 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
+import Router from 'next/router';
 import Navbar from '../src/app/Navbar';
 
-const Signup = () => {
+const SignupPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     username: '',
     password: '',
   });
+  const [error, setError] = useState('');
 
-  const handleChange = (e: { target: { name: any; value: any; }; }) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const handleSignup = async (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    setError('');
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault();
-    // Implement the API call to the backend using the formData
+    try {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/signup`, formData);
+      Router.push('/login'); // Redirect to login on success
+    } catch (err) {
+      setError('Signup failed, please try again.');
+    }
   };
 
   return (
     <>
       <Navbar />
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        {/* Form fields here */}
-        <button type="submit">Sign Up</button>
-      </form>
+      <div className="signup-container">
+        <form onSubmit={handleSignup} className="signup-form">
+          <div className="form-control">
+            <label htmlFor="name">Name</label>
+            <input
+              id="name"
+              type="text"
+              value={formData.name}
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label htmlFor="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              value={formData.username}
+              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              value={formData.password}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+              required
+            />
+          </div>
+          <button type="submit" className="submit-button">Sign up</button>
+          {error && <p className="error-message">{error}</p>}
+        </form>
+      </div>
     </>
   );
 };
 
-export default Signup;
+export default SignupPage;
