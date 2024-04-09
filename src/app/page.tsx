@@ -32,7 +32,8 @@ export default function Home() {
           <Image
             src={(userData as UserData).profilePicture}
             alt="Profile"
-            style={{ width: '100px', height: '100px' }}
+            width={500}
+            height={500}
           />
           {(userData as UserData).isAdmin && <p>You have admin privileges.</p>}{' '}
         </div>

@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import axios from 'axios';
-import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 interface LoginRequest {
   username: string;
@@ -21,15 +20,7 @@ const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [accessToken, setAccessToken] = useState('');
   const router = useRouter(); // Initialize useRouter hook
-
-  useEffect(() => {
-    if (accessToken) {
-      localStorage.setItem('token', accessToken);
-      router.push('/');
-    }
-  }, [accessToken, router]);
 
   const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -49,8 +40,12 @@ const LoginPage = () => {
           maxBodyLength: Infinity,
         }
       );
+
       const { access_token } = response.data;
-      if (accessToken) {
+
+      if (access_token) {
+        // Stores user data and token in localStorage
+        localStorage.setItem('token', access_token);
         const userData = {
           userId: response.data.user_id,
           username: response.data.username,
@@ -58,9 +53,14 @@ const LoginPage = () => {
           profilePicture: response.data.profile_picture,
           isAdmin: response.data.isAdmin,
         };
-        localStorage.setItem('userData', JSON.stringify(userData)); // Store user data as a string
+        localStorage.setItem('userData', JSON.stringify(userData));
+
+        // Redirecting to home page directly after setting user data
+        router.push('/');
+      } else {
+        // Incase where access_token is not present in the response
+        setError('Login failed, please try again.');
       }
-      setAccessToken(access_token);
     } catch (err) {
       console.error(err);
       setError('Login failed, please try again.');
