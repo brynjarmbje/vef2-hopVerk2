@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Navbar /> {/* Include the Navbar at the top of the layout */}
-      <div className={inter.className}>
+      <div>
         <main>{children}</main> {/* The rest of the page content goes here */}
       </div>
     </>
