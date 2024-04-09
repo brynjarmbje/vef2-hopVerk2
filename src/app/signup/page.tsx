@@ -1,7 +1,18 @@
 'use client';
 import { useState } from 'react';
 import axios from 'axios';
-import Router from 'next/router';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
+interface SignupRequest {
+  name: string;
+  username: string;
+  password: string;
+}
+
+interface SignUpResponse {
+  message: string;
+}
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +21,7 @@ const SignupPage = () => {
     password: '',
   });
   const [error, setError] = useState('');
+  const Router = useRouter();
 
   const handleSignup = async (event: { preventDefault: () => void }) => {
     event.preventDefault();

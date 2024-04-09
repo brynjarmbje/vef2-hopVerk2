@@ -101,7 +101,7 @@ const LoginPage = () => {
         <div>
           <p>
             Don&apos;t have an account?
-            <Link href="/signup">Sign up here</Link>
+            <Link href="/signup"> Sign up here</Link>
           </p>
         </div>
       </div>
