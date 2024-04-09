@@ -13,6 +13,9 @@ const nextConfig = {
     // includePaths: [path.join(__dirname, 'styles')],
     includePaths: [path.join(__dirname, '/src/styles')],
   },
+  images: {
+    domains: ['res.cloudinary.com'],
+  },
 };
 
 // Exporting the Next.js configuration object
