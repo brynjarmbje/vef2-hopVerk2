@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from '../../src/app/Navbar';
+import Navbar from '../Navbar';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
