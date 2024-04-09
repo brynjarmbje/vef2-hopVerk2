@@ -26,7 +26,7 @@ export default function Home() {
     <div>
       <h1>Welcome to Cinema App</h1>
       {userData && (
-        <div>
+        <div className="user-info">
           <p>Username: {(userData as UserData).username}</p>
           <p>Name: {(userData as UserData).name}</p>
           <Image
