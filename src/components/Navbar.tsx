@@ -1,13 +1,16 @@
+'use client';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import '../styles/navbar.scss';
 
 const Navbar = () => {
+  const pathname = usePathname();
   return (
     <nav className="navbar">
-      <Link href="/">Home</Link>
-      <Link href="/movies">Movies</Link>
-      <Link href="/signup">Signup</Link>
-      <Link href="/login">Login</Link>
+      {pathname !== '/' && <Link href="/">Home</Link>}
+      {pathname !== '/movies' && <Link href="/movies">Movies</Link>}
+      {pathname !== '/signup' && <Link href="/signup">Signup</Link>}
+      {pathname !== '/login' && <Link href="/login">Login</Link>}
     </nav>
   );
 };
