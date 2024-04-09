@@ -1,17 +1,23 @@
-import type { ReactNode } from 'react';
-import { Inter } from "next/font/google";
-import Navbar from './Navbar'; 
-import "./globals.css";
+import { Inter } from 'next/font/google';
+import Navbar from '../components/Navbar';
+import '../styles/global.scss';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <>
-      <Navbar /> {/* Include the Navbar at the top of the layout */}
-      <div>
-        <main>{children}</main> {/* The rest of the page content goes here */}
-      </div>
-    </>
+    <html lang="en">
+      <body>
+        <Navbar />
+        <main>{children}</main>
+      </body>
+    </html>
   );
 }
