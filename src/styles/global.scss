@@ -71,15 +71,30 @@ body {
 }
 
 .movies-list {
-  list-style: none;
-  padding: 0;
-}
+  list-style-type: decimal; //set to numbering for the list items //set none to remove bullet points
+  padding: 1.5em;
+  li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #ccc;
+    transition: background-color 0.3s ease; // Smooth transition for background color change
+    
+    a {
+      // Targeting links within list items
+      display: block; // Make the link fill the li for a larger clickable area
+      color: inherit; // Use the parent's text color
+      text-decoration: none; // Remove underline from links
+      cursor: pointer; // Change cursor to a pointer on hover
 
-.movies-list li {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #ccc;
+      &:hover {
+        background-color: rgba(
+          var(--foreground-rgb),
+          0.1
+        ); // Slight background highlight on hover
+        padding-left: 0.8rem; // Indent text to give a sense of motion
+      }
+    }
+  }
 }
-
 
 h1 {
   font-size: 2rem;
