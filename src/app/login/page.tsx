@@ -1,55 +1,32 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Toaster, toast } from 'react-hot-toast';
-interface LoginRequest {
-  username: string;
-  password: string;
-}
+import useAuthRedirect from '@/hooks/useAuthRedirect';
 
 interface LoginResponse {
   access_token: string;
   user_id: number;
   username: string;
   name: string;
-  profile_picture: string;
+  profile_picture: string | null;
   isAdmin: boolean;
 }
 
 const LoginPage = () => {
+  useAuthRedirect();
   const router = useRouter(); // Initialize useRouter hook
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isDisabled, setIsDisabled] = useState(false); // New state for managing button disabled state
-  const [hasRedirected, setHasRedirected] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token && !hasRedirected) {
-      setIsDisabled(true); // Disable buttons if token is present
-      toast.success('You are already logged in!', {
-        duration: 1000,
-      });
-
-      const timer = setTimeout(() => {
-        setHasRedirected(true);
-        router.replace('/');
-      }, 1000);
-
-      return () => {
-        clearTimeout(timer);
-        setIsDisabled(false); // Re-enable buttons once the component is about to unmount
-      };
-    }
-    // Removed router from dependencies to avoid re-triggering the effect when router changes
-  }, [hasRedirected, router]);
 
   const handleLogin = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setError('');
+    setIsDisabled(true);
 
     try {
       const response = await axios.post<LoginResponse>(
@@ -89,6 +66,8 @@ const LoginPage = () => {
     } catch (err) {
       console.error(err);
       setError('Login failed, please try again.');
+    } finally {
+      setIsDisabled(false);
     }
   };
 

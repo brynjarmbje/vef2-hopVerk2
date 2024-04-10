@@ -7,7 +7,7 @@ export default function Home() {
     userId: number;
     username: string;
     name: string;
-    profilePicture: string;
+    profilePicture: string | null;
     isAdmin: boolean;
   }
 
@@ -30,8 +30,8 @@ export default function Home() {
           <p>Username: {(userData as UserData).username}</p>
           <p>Name: {(userData as UserData).name}</p>
           <Image
-            src={(userData as UserData).profilePicture}
-            alt="Profile"
+            src={(userData as UserData).profilePicture ?? ''}
+            alt="Profile-Picture"
             width={500}
             height={500}
           />
