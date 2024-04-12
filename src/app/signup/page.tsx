@@ -33,6 +33,7 @@ const SignupPage = () => {
       );
       Router.push('/login'); // Redirect to login on success
     } catch (err) {
+      console.log('This is the error: ', err);
       setError('Signup failed, please try again.');
     }
   };
