@@ -7,10 +7,11 @@ const Navbar = () => {
   const pathname = usePathname();
   return (
     <nav className="navbar">
-      {pathname !== '/' && <Link href="/">Home</Link>}
-      {pathname !== '/movies' && <Link href="/movies">Movies</Link>}
-      {pathname !== '/signup' && <Link href="/signup">Signup</Link>}
-      {pathname !== '/login' && <Link href="/login">Login</Link>}
+      {<Link href="/">Home</Link>}
+      {<Link href="/movies">Movies</Link>}
+      {<Link href="/stars">Stars</Link>}
+      {<Link href="/signup">Signup</Link>}
+      {<Link href="/login">Login</Link>}
     </nav>
   );
 };

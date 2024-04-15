@@ -24,7 +24,8 @@ body {
 
 .login-container,
 .signup-container,
-.movies-container {
+.movies-container,
+.stars-container {
   margin: 0 auto;
   padding: 1rem;
   max-width: 400px;
@@ -70,6 +71,7 @@ body {
   margin-top: 1rem;
 }
 
+.stars-list,
 .movies-list {
   list-style-type: decimal; //set to numbering for the list items //set none to remove bullet points
   padding: 1.5em;
@@ -77,7 +79,7 @@ body {
     padding: 1rem 0;
     border-bottom: 1px solid #ccc;
     transition: background-color 0.3s ease; // Smooth transition for background color change
-    
+
     a {
       // Targeting links within list items
       display: block; // Make the link fill the li for a larger clickable area
