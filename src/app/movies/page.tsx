@@ -1,7 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Link from 'next/dist/client/link';
+import { useEffect, useState } from 'react';
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -12,7 +12,7 @@ const MoviesPage = () => {
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/movies`
         );
-        //console.log(response.data.movies);
+        console.log(response.data.movies);
         setMovies(response.data.movies);
       } catch (err) {
         console.error(err);

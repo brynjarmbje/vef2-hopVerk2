@@ -1,0 +1,51 @@
+.starDetail {
+  padding: 2em; // less padding for a more compact look
+  max-width: 800px;
+  margin: 2em auto; // top and bottom margin for breathing room
+  background-color: #272627;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+  border-radius: 8px;
+  color: #e0dddd; // Default text color for the container
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1em;
+    color: #f0e5e5; // Slightly brighter for the title for emphasis
+  }
+
+  p {
+    font-size: 1rem; // Consistent unit usage
+    line-height: 1.6; // Improved line spacing for readability
+    margin-bottom: 1em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: #1e90ff; // Brighter blue for links to stand out more
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      color: #add8e6; // Lighter color on hover for better visibility
+    }
+  }
+
+  // Enhanced contrast and visibility for key information
+  .year,
+  .created,
+  .updated {
+    font-weight: bold;
+    color: #c9c4c4;
+  }
+
+  .description {
+    margin-top: 1em;
+    font-style: italic;
+    font-size: 1.1rem; // Slightly larger for importance
+    color: #dcdcdc; // Lighter for emphasis
+  }
+}
