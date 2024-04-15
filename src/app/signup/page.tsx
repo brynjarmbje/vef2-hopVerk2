@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 interface SignupRequest {
   name: string;
@@ -34,6 +33,7 @@ const SignupPage = () => {
       );
       Router.push('/login'); // Redirect to login on success
     } catch (err) {
+      console.log('This is the error: ', err);
       setError('Signup failed, please try again.');
     }
   };
