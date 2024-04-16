@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Link from 'next/link';
 import '../../../styles/star.scss';
+import MoviePage from './movies/page';
 
 export async function generateStaticParams() {
   const response = await axios.get(
@@ -29,6 +30,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
       </p>
       <p> Created :{response.data.created} </p>
       <p> Updated : {response.data.updated}</p>
+      <MoviePage params={{ slug }} />
     </div>
   );
 }
