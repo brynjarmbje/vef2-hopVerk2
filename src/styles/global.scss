@@ -2,6 +2,9 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  -webkit-font-smoothing: antialiased; /* For WebKit/Blink browsers */
+  -moz-osx-font-smoothing: grayscale; /* For Firefox */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3); /* Light shadow for light background */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -9,6 +12,9 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    -webkit-font-smoothing: antialiased; /* For WebKit/Blink browsers */
+    -moz-osx-font-smoothing: grayscale; /* For Firefox */
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3); /* Lighter shadow for better visibility on dark background */
   }
 }
 
@@ -158,4 +164,26 @@ h1 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Full viewport height, adjust as needed
+
+  img {
+    width: 50px; // Adjust the size as needed
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
