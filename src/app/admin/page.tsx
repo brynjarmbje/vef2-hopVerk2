@@ -11,6 +11,19 @@ type UserData = {
   isAdmin: boolean;
 };
 
+type PatchMovieData = {
+  slug?: string;
+  title?: string;
+  year?: number;
+  url?: string;
+  description?: string;
+};
+
+type Error = {
+  postMovieError?: string;
+  patchMovieError?: string;
+};
+
 const AdminPage = () => {
   const userDataString = localStorage.getItem('userData');
   const token = localStorage.getItem('token');
@@ -28,17 +41,21 @@ const AdminPage = () => {
   const router = useRouter();
 
   const [moviePostSuccess, setMoviePostSuccess] = useState(false);
-  const [error, setError] = useState('');
+
+  const [error, setError] = useState<Error>({
+    postMovieError: '',
+    patchMovieError: '',
+  });
+
   const [movieData, setMovieData] = useState({
     title: '',
-    year: 0,
+    year: 2024,
     url: '',
     description: '',
   });
 
   const handleMovie = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    setError('');
 
     try {
       await axios.post(
@@ -47,14 +64,62 @@ const AdminPage = () => {
       );
       setMoviePostSuccess(true);
     } catch (err) {
-      setError('Posting movie failed');
+      setError({ postMovieError: 'Posting movie failed' });
     }
   };
+  /*
+
+  const [moviePatchSuccess, setMoviePatchSuccess] = useState(false);
+  const [patchMovieData, setPatchMovieData] = useState<PatchMovieData>({});
+
+  const handlePatchMovie = async (event: { preventDefault: () => void }) => {
+    event.preventDefault();
+
+    try {
+      await axios.patch(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/movies/${patchMovieData.slug}`,
+        patchMovieData
+      );
+      setMoviePatchSuccess(true);
+    } catch (err) {
+      setError({ patchMovieError: 'Patching movie failed' });
+    }
+  };
+
+  let data = JSON.stringify({
+    title: 'Bobbi fer í búðina',
+    description: 'Bobbi er stór strákur',
+  });
+
+  let config = {
+    method: 'patch',
+    maxBodyLength: Infinity,
+    url: 'https://vef2-2024-h1.onrender.com/movies/bobbi-fer-i-budina',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJhZG1pbiIsImFkbWluIjp0cnVlLCJpYXQiOjE3MTMzNjQwMjQsImV4cCI6MTcxMzQ1MDQyNH0.y1jStkdTfJAPfzpa4pF6ygxisZ6g_ZKyNA1_WtBhXBY',
+    },
+    data: data,
+  };
+  
+
+  axios
+    .request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
+    */
 
   return (
     <>
       <div className="form-container">
-        <form onSubmit={handleMovie} className="movie-form">
+        <h1>Post Movie</h1>
+        <form onSubmit={handleMovie} className="post-form">
           <div className="form-control">
             <label htmlFor="title">Title</label>
             <input
@@ -111,7 +176,9 @@ const AdminPage = () => {
               Movie {movieData.title} successfully posted
             </p>
           )}
-          {error && <p className="error-message">{error}</p>}
+          {error.postMovieError && (
+            <p className="error-message">{error.postMovieError}</p>
+          )}
         </form>
       </div>
     </>
