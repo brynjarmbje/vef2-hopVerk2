@@ -27,7 +27,10 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background: rgba(var(--background-start-rgb), 0.5); // Semi-transparent background for the user info
+  background: rgba(
+    var(--background-start-rgb),
+    0.5
+  ); // Semi-transparent background for the user info
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
   margin: 2rem auto;
@@ -47,7 +50,12 @@ body {
   .admin-privileges {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background-color: rgba(0, 123, 255, 0.1); // Soft blue background for emphasis
+    background-color: rgba(
+      0,
+      123,
+      255,
+      0.1
+    ); // Soft blue background for emphasis
     color: rgba(0, 123, 255); // Blue text to match the background
     border-radius: 20px;
     font-weight: bold;
@@ -63,8 +71,24 @@ body {
   max-width: 400px;
 }
 
+.form-container {
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding: 1rem;
+  max-width: 600px;
+  padding: 5rem;
+  border: #a7a7a7;
+  box-shadow:
+    rgba(96, 96, 96, 0.16) 0px 1px 4px,
+    rgba(128, 128, 128) 0px 0px 0px 8px;
+
+  background-color: #4a4a4a;
+  border-radius: 20%;
+}
+
 .login-form,
-.signup-form {
+.signup-form,
+.post-form {
   display: flex;
   flex-direction: column;
 }
