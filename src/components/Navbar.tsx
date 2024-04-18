@@ -1,7 +1,8 @@
 'use client';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import '../styles/navbar.scss';
+import '@/styles/navbar.scss';
 
 type UserData = {
   userId: Number;
@@ -13,30 +14,31 @@ type UserData = {
 
 const Navbar = () => {
   const pathname = usePathname();
-  const userDataString = localStorage.getItem('userData'); // Retrieves user data from localStorage
+  const [userData, setUserData] = useState<UserData | null>(null);
 
-  let userData: UserData | null = null;
-
-  if (userDataString) {
-    userData = JSON.parse(userDataString);
-  }
+  useEffect(() => {
+    const userDataString = localStorage.getItem('userData'); // Now inside useEffect, it runs client-side
+    if (userDataString) {
+      setUserData(JSON.parse(userDataString));
+    }
+  }, []); // The empty array ensures this runs once on component mount
 
   const isLoggedIn = Boolean(userData); // Checks if userData is not null or undefined
 
   return (
     <nav className="navbar">
-      {<Link href="/">Home</Link>}
-      {<Link href="/movies">Movies</Link>}
-      {<Link href="/stars">Stars</Link>}
+      <Link href="/">Home</Link>
+      <Link href="/movies">Movies</Link>
+      <Link href="/stars">Stars</Link>
       {isLoggedIn ? (
         <>
-          {<Link href="/logout">Logout</Link>}
+          <Link href="/logout">Logout</Link>
           {userData?.isAdmin && <Link href="/admin">Admin</Link>}
         </>
       ) : (
         <>
-          {<Link href="/signup">Signup</Link>}
-          {<Link href="/login">Login</Link>}
+          <Link href="/signup">Signup</Link>
+          <Link href="/login">Login</Link>
         </>
       )}
     </nav>

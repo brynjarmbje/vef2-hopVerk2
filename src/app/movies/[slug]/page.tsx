@@ -1,5 +1,5 @@
 import axios from 'axios';
-import '../../../styles/movie.scss';
+import '@/styles/movie.scss';
 import MoviePage from './stars/page';
 
 export async function generateStaticParams() {
