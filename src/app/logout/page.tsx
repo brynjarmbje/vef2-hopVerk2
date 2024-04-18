@@ -3,9 +3,10 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
-import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 import { logout } from '@/store/authSlice';
+import Loadingsvg from '@/components/Loadingsvg';
+
 
 const Logout = () => {
   const router = useRouter();
@@ -42,11 +43,7 @@ const Logout = () => {
   return (
     <div className="logout-container">
       <p>Logging out...</p>
-      <Image
-        src="../../../styles/spinner.svg"
-        alt="spinner"
-        width={50}
-        height={50}
+      <Loadingsvg
       />
     </div>
   );
