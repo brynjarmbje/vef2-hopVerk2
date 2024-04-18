@@ -1,6 +1,8 @@
 # Next.js Project
 
-This project is built using [Next.js](https://nextjs.org/), bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). It's configured to run with a backend whose database is hosted on Render, which may take a while to start due to cold starts.
+This project is built using [Next.js](https://nextjs.org/), 
+
+Backend : our h1 project 
 
 ## Getting Started
 
@@ -12,7 +14,7 @@ npm run dev
 bun dev
 ```
 
-Open http://localhost:3000 with your browser to see the result. The application interfaces with a backend, so ensure that your backend service is running or accessible if you are working locally.
+Open http://localhost:3000 with your browser to see the result.
 
 ## Deployment
 
