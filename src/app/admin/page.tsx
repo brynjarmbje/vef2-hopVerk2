@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter, redirect } from 'next/navigation';
 
@@ -25,34 +25,45 @@ type Error = {
 };
 
 const AdminPage = () => {
-  const userDataString = localStorage.getItem('userData');
-  const token = localStorage.getItem('token');
-  axios.defaults.headers.common = { Authorization: `bearer ${token}` };
-  let userData: UserData | null = null;
-
-  if (userDataString) {
-    userData = JSON.parse(userDataString);
-  }
-
-  if (!userData?.isAdmin) {
-    redirect('/');
-  }
-
   const router = useRouter();
-
+  const [userData, setUserData] = useState<UserData | null>(null);
   const [moviePostSuccess, setMoviePostSuccess] = useState(false);
-
   const [error, setError] = useState<Error>({
     postMovieError: '',
     patchMovieError: '',
   });
-
-  const [movieData, setMovieData] = useState({
+  const [movieData, setMovieData] = useState<PatchMovieData>({
     title: '',
     year: 2024,
     url: '',
     description: '',
   });
+
+  // Effect for auth and redirect, setup user data and authorization
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      const userDataString = localStorage.getItem('userData');
+
+      // Set the authorization token for all axios requests
+      if (token) {
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      }
+
+      // Parse user data from local storage
+      if (userDataString) {
+        try {
+          const data = JSON.parse(userDataString);
+          setUserData(data);
+          if (!data.isAdmin) {
+            router.replace('/');
+          }
+        } catch (error) {
+          console.error('Failed to parse user data:', error);
+        }
+      }
+    }
+  }, [router]);
 
   const handleMovie = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
