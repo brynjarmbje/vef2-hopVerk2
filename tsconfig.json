@@ -22,9 +22,8 @@
       "@/styles/*": ["./src/styles/*"],
       "@/components/*": ["./src/components/*"],
       "@/hooks/*": ["./src/hooks/*"],
-      "@/app/*": ["./src/app/*"],
+      "@/app/*": ["./src/app/*"]
     }
-    
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

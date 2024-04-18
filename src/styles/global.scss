@@ -18,8 +18,6 @@
   }
 }
 
-
-
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -168,10 +166,9 @@ h1 {
   margin-bottom: 1rem;
 }
 
-
 .loading-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
+  height: 100vh;
 }

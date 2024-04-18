@@ -1,12 +1,10 @@
 import { Inter } from 'next/font/google';
 import Navbar from '../components/Navbar';
 import '@/styles/global.scss';
-import Spinner from '@/styles/spinner.svg' ;
 
 import { Metadata } from 'next';
 import { Suspense } from 'react';
-
-
+import Loadingsvg from '@/components/Loadingsvg';
 
 export const metadata: Metadata = {
   title: 'Cinema App',
@@ -25,10 +23,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        
         <Navbar />
-        <Suspense fallback={Spinner}>
-        <main>{children}</main>
+        <Suspense fallback={<Loadingsvg />}>
+          <main>{children}</main>
         </Suspense>
       </body>
     </html>

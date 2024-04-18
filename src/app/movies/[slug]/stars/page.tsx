@@ -11,7 +11,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true); 
+    setIsLoading(true);
     const fetchData = async () => {
       try {
         const [starsResponse] = await Promise.all([
@@ -22,8 +22,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         setMovies(starsResponse.data.stars);
       } catch (err) {
         console.error(err);
-      }
-      finally{
+      } finally {
         setIsLoading(false);
       }
     };
@@ -32,7 +31,7 @@ export default function Page({ params }: { params: { slug: string } }) {
   }, [slug]);
 
   if (isLoading) {
-    return <Loadingsvg />;  
+    return <Loadingsvg />;
   }
 
   return (
