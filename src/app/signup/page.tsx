@@ -88,7 +88,7 @@ const SignupPage = () => {
           </button>
           {AccountSuccess && (
             <p className="success-message">
-              Account for {formData.name+" username: "+ formData.username } successfully created
+              Account for {formData.name && formData.username } successfully created , Redirecting to Login Page . . .
             </p>
           )}
           {error && <p className="error-message">{error}</p>}
