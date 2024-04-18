@@ -1,50 +1,66 @@
+
+@import 'variables'; 
+
+// Theme default settings using CSS variables
+:root {
+    --movie-detail-bg: $movie-detail-bg-light;
+    --movie-detail-text: $movie-detail-text-light;
+    --movie-detail-shadow: $movie-detail-shadow-light;
+}
+
+// Dark mode overrides
+@media (prefers-color-scheme: dark) {
+    :root {
+        --movie-detail-bg: $movie-detail-bg-dark;
+        --movie-detail-text: $movie-detail-text-dark;
+        --movie-detail-shadow: $movie-detail-shadow-dark;
+    }
+}
+
 .movieDetail {
-    padding: 2em; // less padding for a more compact look
+    padding: 2em;
     max-width: 800px;
-    margin: 2em auto; // top and bottom margin for breathing room
-    background-color: #272627;
-    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+    margin: 2em auto;
+    background-color: var(--movie-detail-bg);
+    box-shadow: var(--movie-detail-shadow) 0px 0px 0px 3px;
     border-radius: 8px;
-    color: #e0dddd; // Default text color for the container
-  
+    color: var(--movie-detail-text);
+
     h2 {
-      font-size: 2rem;
-      margin-bottom: 1em;
-      color: #f0e5e5; // Slightly brighter for the title for emphasis
+        font-size: 2rem;
+        margin-bottom: 1em;
+        color: lighten(var(--movie-detail-text), 10%);
     }
-  
+
     p {
-      font-size: 1rem; // Consistent unit usage
-      line-height: 1.6; // Improved line spacing for readability
-      margin-bottom: 1em;
-  
-      &:last-child {
-        margin-bottom: 0;
-      }
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
-  
+
     a {
-      color: #1e90ff; // Brighter blue for links to stand out more
-      text-decoration: none;
-  
-      &:hover, &:focus {
-        text-decoration: underline;
-        color: #add8e6; // Lighter color on hover for better visibility
-      }
+        color: $base-link-color;
+        text-decoration: none;
+
+        &:hover, &:focus {
+            text-decoration: underline;
+            color: $hover-link-color;
+        }
     }
-  
-    // Enhanced contrast and visibility for key information
+
     .year, .created, .updated {
-      font-weight: bold;
-      color: #c9c4c4;
+        font-weight: bold;
+        color: darken(var(--movie-detail-text), 10%);
     }
-  
 
     .description {
-      margin-top: 1em;
-      font-style: italic;
-      font-size: 1.1rem; // Slightly larger for importance
-      color: #dcdcdc; // Lighter for emphasis
+        margin-top: 1em;
+        font-style: italic;
+        font-size: 1.1rem;
+        color: lighten(var(--movie-detail-text), 20%);
     }
-  }
-  
+}

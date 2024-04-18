@@ -1,0 +1,39 @@
+// Default light mode variables
+$foreground-rgb: 0, 0, 0;
+$background-start-rgb: 214, 219, 220;
+$background-end-rgb: 255, 255, 255;
+$shadow-color: rgba(0, 0, 0, 0.3);
+$link-background-hover: rgba(0, 0, 0, 0.1);
+$admin-highlight-bg: rgba(0, 123, 255, 0.1);
+$admin-highlight-text: rgba(0, 123, 255);
+$button-hover-bg: #0056b3;
+$base-bg: #ffffff;
+$border-color: #ccc;
+$error-text: red;
+
+// Dark mode variables
+$dark-foreground-rgb: 255, 255, 255;
+$dark-background-start-rgb: 25, 25, 25;
+$dark-background-end-rgb: 45, 45, 45;
+$dark-shadow-color: rgba(255, 255, 255, 0.3);
+$dark-link-background-hover: rgba(255, 255, 255, 0.1);
+$dark-admin-highlight-bg: rgba(0, 123, 255, 0.1);
+$dark-admin-highlight-text: rgba(0, 123, 255);
+$dark-button-hover-bg: #0041a8;
+$dark-base-bg: #121212;
+$dark-border-color: #888;
+$dark-error-text: #ff6b6b;
+
+// Common base variables
+$base-link-color: #1e90ff;
+$hover-link-color: #add8e6;
+
+// Light theme variables
+$movie-detail-bg-light: #ffffff; // light background for light theme
+$movie-detail-text-light: #272627; // dark text for light theme
+$movie-detail-shadow-light: rgba(0, 0, 0, 0.3); // shadow for light theme
+
+// Dark theme variables
+$movie-detail-bg-dark: #272627; // dark background for dark theme
+$movie-detail-text-dark: #e0dddd; // light text for dark theme
+$movie-detail-shadow-dark: rgba(3, 102, 214, 0.3); // shadow for dark theme
