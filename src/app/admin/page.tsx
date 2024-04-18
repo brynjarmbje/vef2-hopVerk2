@@ -76,7 +76,7 @@ const AdminPage = () => {
       );
       setMoviePostSuccess(true);
     } catch (err) {
-      setError({ postMovieError: 'Posting movie failed' });
+      setError({ postMovieError: 'Posting movie f9ailed' });
     }
   };
   /*

@@ -1,7 +1,8 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 interface SignupRequest {
   name: string;
@@ -14,6 +15,7 @@ interface SignUpResponse {
 }
 
 const SignupPage = () => {
+  const [AccountSuccess, setAccountSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -31,7 +33,10 @@ const SignupPage = () => {
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/signup`,
         formData
       );
-      Router.push('/login'); // Redirect to login on success
+      setAccountSuccess(true);
+      setTimeout(() => {
+        Router.push('/login');
+      }, 2000);
     } catch (err) {
       console.log('This is the error: ', err);
       setError('Signup failed, please try again.');
@@ -81,6 +86,12 @@ const SignupPage = () => {
           <button type="submit" className="submit-button">
             Sign up
           </button>
+          {AccountSuccess && (
+            <p className="success-message">
+              Account for {formData.name && formData.username} successfully
+              created , Redirecting to Login Page . . .
+            </p>
+          )}
           {error && <p className="error-message">{error}</p>}
         </form>
       </div>
