@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Link from 'next/link'; 
 import Pagination from '@/components/Pagination'; 
+import Loadingsvg from '@/components/Loadingsvg';
 
 interface Star {
   id: number;
@@ -21,11 +22,13 @@ interface PagingInfo {
 }
 
 const StarsPage = () => {
+  const [isLoading, setIsLoading] = useState(false);  // Loading state
   const [stars, setStars] = useState<Star[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [paging, setPaging] = useState<PagingInfo | null>(null);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchStars = async () => {
       try {
         const response = await axios.get(
@@ -36,6 +39,9 @@ const StarsPage = () => {
       } catch (err) {
         console.error(err);
       }
+      finally{
+        setIsLoading(false);
+      }
     };
 
     fetchStars();
@@ -44,6 +50,11 @@ const StarsPage = () => {
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage); // Directly set the new page
   };
+
+
+  if (isLoading) {
+    return <Loadingsvg />;  // Displays loading spinner when loading
+  }
 
   return (
     <div className="stars-container">

@@ -1,42 +1,24 @@
-@use "variables";
-
 :root {
-  --foreground-rgb: $foreground-rgb;
-  --background-start-rgb: $background-start-rgb;
-  --background-end-rgb: $background-end-rgb;
-  --shadow-color: $shadow-color;
-  --link-background-hover: $link-background-hover;
-  --admin-highlight-bg: $admin-highlight-bg;
-  --admin-highlight-text: $admin-highlight-text;
-  --button-hover-bg: $button-hover-bg;
-  --base-bg: $base-bg;
-  --border-color: $border-color;
-  --error-text: $error-text;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
   -webkit-font-smoothing: antialiased; /* For WebKit/Blink browsers */
   -moz-osx-font-smoothing: grayscale; /* For Firefox */
   text-shadow: 0 0 1px rgba(0, 0, 0, 0.3); /* Light shadow for light background */
 }
 
-
-
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: $dark-foreground-rgb;
-    --background-start-rgb: $dark-background-start-rgb;
-    --background-end-rgb: $dark-background-end-rgb;
-    --shadow-color: $dark-shadow-color;
-    --link-background-hover: $dark-link-background-hover;
-    --admin-highlight-bg: $dark-admin-highlight-bg;
-    --admin-highlight-text: $dark-admin-highlight-text;
-    --button-hover-bg: $dark-button-hover-bg;
-    --base-bg: $dark-base-bg;
-    --border-color: $dark-border-color;
-    --error-text: $dark-error-text;
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 25, 25, 25;
+    --background-end-rgb: 45, 45, 45;
     -webkit-font-smoothing: antialiased; /* For WebKit/Blink browsers */
     -moz-osx-font-smoothing: grayscale; /* For Firefox */
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.3); /* Lighter shadow for better visibility on dark background */
   }
 }
+
+
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -46,16 +28,19 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-  text-shadow: 0 0 1px var(--shadow-color);
 }
+
 .user-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  background: rgba(var(--background-start-rgb), 0.5);
-  box-shadow: 0 4px 6px var(--shadow-color);
+  background: rgba(
+    var(--background-start-rgb),
+    0.5
+  ); // Semi-transparent background for the user info
   border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
   margin: 2rem auto;
   max-width: 500px;
 
@@ -73,8 +58,13 @@ body {
   .admin-privileges {
     margin-top: 1rem;
     padding: 0.5rem 1rem;
-    background-color: var(--admin-highlight-bg);
-    color: var(--admin-highlight-text);
+    background-color: rgba(
+      0,
+      123,
+      255,
+      0.1
+    ); // Soft blue background for emphasis
+    color: rgba(0, 123, 255); // Blue text to match the background
     border-radius: 20px;
     font-weight: bold;
   }
@@ -125,11 +115,6 @@ body {
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: var(--base-bg);
-}
-
-.submit-button:hover {
-  background-color: var(--button-hover-bg);
 }
 
 .submit-button {
@@ -141,18 +126,13 @@ body {
   cursor: pointer;
 }
 
-
-
-
-
-
-.error-message {
-  margin-top: 1rem;
-  color: var(--error-text);
+.submit-button:hover {
+  background-color: #0056b3;
 }
 
-.movies-list a:hover, .stars-list a:hover {
-  background-color:var(--link-background-hover) ;
+.error-message {
+  color: red;
+  margin-top: 1rem;
 }
 
 .stars-list,

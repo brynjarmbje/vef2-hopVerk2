@@ -1,68 +1,51 @@
-@use "variables";
-
-
-:root {
-    --star-detail-bg: $star-detail-bg-light;
-    --star-detail-text: $star-detail-text-light;
-    --star-detail-shadow: $star-detail-shadow-light;
-    --star-detail-link-color: $star-detail-link-color-light;
-    --star-detail-link-hover: $star-detail-link-hover-light;
-    --star-detail-emphasis-text: $star-detail-emphasis-text-light;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --star-detail-bg: $star-detail-bg-dark;
-        --star-detail-text: $star-detail-text-dark;
-        --star-detail-shadow: $star-detail-shadow-dark;
-        --star-detail-link-color: $star-detail-link-color-dark;
-        --star-detail-link-hover: $star-detail-link-hover-dark;
-        --star-detail-emphasis-text: $star-detail-emphasis-text-dark;
-    }
-}
-
 .starDetail {
-  padding: 2em;
+  padding: 2em; // less padding for a more compact look
   max-width: 800px;
-  margin: 2em auto;
-  background-color: var(--star-detail-bg);
-  box-shadow: var(--star-detail-shadow) 0px 0px 0px 3px;
+  margin: 2em auto; // top and bottom margin for breathing room
+  background-color: #272627;
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
   border-radius: 8px;
-  color: var(--star-detail-text);
+  color: #e0dddd; // Default text color for the container
 
   h2 {
     font-size: 2rem;
     margin-bottom: 1em;
-    color: lighten(var(--star-detail-text), 5%); // Slightly lighter for title
+    color: #f0e5e5; // Slightly brighter for the title for emphasis
   }
 
   p {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1rem; // Consistent unit usage
+    line-height: 1.6; // Improved line spacing for readability
     margin-bottom: 1em;
+
     &:last-child {
       margin-bottom: 0;
     }
   }
 
   a {
-    color: var(--star-detail-link-color);
+    color: #1e90ff; // Brighter blue for links to stand out more
     text-decoration: none;
-    &:hover, &:focus {
+
+    &:hover,
+    &:focus {
       text-decoration: underline;
-      color: var(--star-detail-link-hover);
+      color: #add8e6; // Lighter color on hover for better visibility
     }
   }
 
-  .year, .created, .updated {
+  // Enhanced contrast and visibility for key information
+  .year,
+  .created,
+  .updated {
     font-weight: bold;
-    color: var(--star-detail-emphasis-text);
+    color: #c9c4c4;
   }
 
   .description {
     margin-top: 1em;
     font-style: italic;
-    font-size: 1.1rem;
-    color: lighten(var(--star-detail-text), 10%); // Even lighter for emphasis
+    font-size: 1.1rem; // Slightly larger for importance
+    color: #dcdcdc; // Lighter for emphasis
   }
 }

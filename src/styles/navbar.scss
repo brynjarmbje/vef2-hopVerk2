@@ -1,35 +1,19 @@
-@use "variables";
-
-
-:root {
-    --navbar-bg: $base-navbar-bg-light;
-    --navbar-text: $base-navbar-text-light;
-    --navbar-hover: $base-navbar-hover-light;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --navbar-bg: $base-navbar-bg-dark;
-        --navbar-text: $base-navbar-text-dark;
-        --navbar-hover: $base-navbar-hover-dark;
-    }
-}
-
+// navbar.scss
 .navbar {
-  background-color: var(--navbar-bg);
-  color: var(--navbar-text);
+  background-color: #333; // Dark background for the navbar
+  color: #fff; // White text color
   display: flex;
-  justify-content: space-around;
-  padding: 1rem 0;
+  justify-content: space-around; // Space out the links evenly
+  padding: 1rem 0; // Added some padding above and below
 
   a {
     padding: 1rem 0;
-    color: inherit; // Ensures links use the navbar text color
-    text-decoration: underline;
-    transition: color 0.3s; // Smooth color transition for hover effect
+    color: inherit; // Inherits the white color for links
+    text-decoration: underline; 
+    transition: color 0.3s; // Smooth transition for hover effect
 
     &:hover {
-      color: var(--navbar-hover); // Uses variable for hover color
+      color: #0070f3; // Change color on hover
     }
   }
 }
