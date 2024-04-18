@@ -16,7 +16,7 @@ Open http://localhost:3000 with your browser to see the result. The application 
 
 ## Deployment
 The application is deployed on Vercel. You can view the deployed application here: 
-https://vef2-hopverk2-ongte7wpe-brynjarmbjes-projects.vercel.app/
+https://vef2-hopverk2.vercel.app/
 
 ## Features
 Frontend: Built with Next.js, the frontend serves as the interface for users.
