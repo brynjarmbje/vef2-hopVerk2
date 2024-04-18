@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Toaster, toast } from 'react-hot-toast';
 import useAuthRedirect from '@/hooks/useAuthRedirect';
+import { useDispatch } from 'react-redux';
+import { login } from '@/store/authSlice';
 
 interface LoginResponse {
   access_token: string;
@@ -16,6 +18,7 @@ interface LoginResponse {
 }
 
 const LoginPage = () => {
+  const dispatch = useDispatch(); 
   useAuthRedirect();
   const router = useRouter(); // Initialize useRouter hook
   const [username, setUsername] = useState('');
@@ -56,7 +59,7 @@ const LoginPage = () => {
           isAdmin: response.data.isAdmin,
         };
         localStorage.setItem('userData', JSON.stringify(userData));
-
+        dispatch(login(userData));
         // Redirecting to home page directly after setting user data
         router.push('/');
       } else {

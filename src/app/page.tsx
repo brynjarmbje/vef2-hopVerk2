@@ -1,44 +1,50 @@
-'use client'; // Add this line at the top of your file to mark the component for client-side execution
+'use client'
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import React from 'react';
 
-export default function Home() {
-  interface UserData {
-    userId: number;
-    username: string;
-    name: string;
-    profilePicture: string | null;
-    isAdmin: boolean;
-  }
+import Navbar from '@/components/Navbar';
+import { Providers } from '@/components/Providers';
 
-  const [userData, setUserData] = useState(null);
+interface UserData {
+  userId: number;
+  username: string;
+  name: string;
+  profilePicture: string | null;
+  isAdmin: boolean;
+}
+
+export default function Home() {
+  const [userData, setUserData] = useState<UserData | null>(null);
+
   useEffect(() => {
     const userDataString = localStorage.getItem('userData'); // Retrieve user data string from localStorage
     if (userDataString) {
-      console.log(userDataString, 'userDataString:');
-      const data = JSON.parse(userDataString);
-      console.log(data);
+      const data: UserData = JSON.parse(userDataString);
       setUserData(data);
     }
   }, []);
 
   return (
-    <div>
-      <h1>Welcome to Cinema App</h1>
-      {userData && (
-        <div className="user-info">
-          <p>Username: {(userData as UserData).username}</p>
-          <p>Name: {(userData as UserData).name}</p>
-          <Image
-            src={(userData as UserData).profilePicture ?? ''}
-            alt="Profile-Picture"
-            width={500}
-            height={500}
-          />
-          {(userData as UserData).isAdmin && <p>You have admin privileges.</p>}{' '}
+        <div>
+          <h1>Welcome to Cinema App</h1>
+          {userData && (
+            <div className="user-info">
+              <p>Username: {userData.username}</p>
+              <p>Name: {userData.name}</p>
+              {userData.profilePicture && (
+                <Image
+                  src={userData.profilePicture}
+                  alt="Profile Picture"
+                  width={500}
+                  height={500}
+                  unoptimized={true} // Use this only if your images are not served from an optimized source
+                />
+              )}
+              {userData.isAdmin && <p>You have admin privileges.</p>}
+            </div>
+          )}
         </div>
-      )}
-    </div>
+
   );
 }
