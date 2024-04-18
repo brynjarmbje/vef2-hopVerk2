@@ -1,35 +1,57 @@
+@use "variables";
+
+:root {
+    --pagination-bg: $pagination-bg-light;
+    --pagination-text: $pagination-text-light;
+    --pagination-hover-bg: $pagination-hover-bg-light;
+    --pagination-disabled-bg: $pagination-disabled-bg-light;
+    --pagination-disabled-text: $pagination-disabled-text-light;
+    --pagination-focus-shadow: $pagination-focus-shadow-light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --pagination-bg: $pagination-bg-dark;
+        --pagination-text: $pagination-text-dark;
+        --pagination-hover-bg: $pagination-hover-bg-dark;
+        --pagination-disabled-bg: $pagination-disabled-bg-dark;
+        --pagination-disabled-text: $pagination-disabled-text-dark;
+        --pagination-focus-shadow: $pagination-focus-shadow-dark;
+    }
+}
+
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 1rem;
-  
+
     button {
-      padding: 0.5rem 1rem;
-      margin: 0 0.5rem;
-      background-color: #2A2A2A; // Dark grey, stands out on black
-      color: #FFF; // White text for contrast
-      border: none;
-      border-radius: 4px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out, transform 0.2s ease;
-  
-      &:hover {
-        background-color: #444; // Slightly lighter grey on hover
-        transform: translateY(-2px);
-      }
-  
-      &:disabled {
-        background-color: #1A1A1A;
-        color: #666; 
-        cursor: default;
-        transform: none;
-      }
-  
-      &:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4); 
-      }
+        padding: 0.5rem 1rem;
+        margin: 0 0.5rem;
+        background-color: var(--pagination-bg);
+        color: var(--pagination-text);
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease;
+
+        &:hover {
+            background-color: var(--pagination-hover-bg);
+            transform: translateY(-2px);
+        }
+
+        &:disabled {
+            background-color: var(--pagination-disabled-bg);
+            color: var(--pagination-disabled-text);
+            cursor: default;
+            transform: none;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px var(--pagination-focus-shadow);
+        }
     }
-  }
+}

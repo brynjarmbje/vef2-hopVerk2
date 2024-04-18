@@ -1,4 +1,4 @@
-@import 'variables'; 
+@use "variables";
 
 :root {
   --foreground-rgb: $foreground-rgb;
@@ -12,10 +12,12 @@
   --base-bg: $base-bg;
   --border-color: $border-color;
   --error-text: $error-text;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased; /* For WebKit/Blink browsers */
+  -moz-osx-font-smoothing: grayscale; /* For Firefox */
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3); /* Light shadow for light background */
 }
+
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -30,6 +32,9 @@
     --base-bg: $dark-base-bg;
     --border-color: $dark-border-color;
     --error-text: $dark-error-text;
+    -webkit-font-smoothing: antialiased; /* For WebKit/Blink browsers */
+    -moz-osx-font-smoothing: grayscale; /* For Firefox */
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3); /* Lighter shadow for better visibility on dark background */
   }
 }
 
@@ -123,6 +128,10 @@ body {
   background-color: var(--base-bg);
 }
 
+.submit-button:hover {
+  background-color: var(--button-hover-bg);
+}
+
 .submit-button {
   padding: 0.5rem;
   border: none;
@@ -132,9 +141,7 @@ body {
   cursor: pointer;
 }
 
-.submit-button:hover {
-  background-color: var(--button-hover-bg);
-}
+
 
 
 

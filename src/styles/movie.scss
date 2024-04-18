@@ -1,5 +1,5 @@
+@use "variables";
 
-@import 'variables'; 
 
 // Theme default settings using CSS variables
 :root {
@@ -14,6 +14,7 @@
         --movie-detail-bg: $movie-detail-bg-dark;
         --movie-detail-text: $movie-detail-text-dark;
         --movie-detail-shadow: $movie-detail-shadow-dark;
+        
     }
 }
 
