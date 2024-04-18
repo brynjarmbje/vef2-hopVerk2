@@ -1,6 +1,8 @@
 'use client'; // Add this line at the top of your file to mark the component for client-side execution
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import React from 'react';
+
 
 export default function Home() {
   interface UserData {

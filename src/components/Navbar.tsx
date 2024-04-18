@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import '@/styles/navbar.scss';
+import React from 'react';
 
 type UserData = {
   userId: Number;
