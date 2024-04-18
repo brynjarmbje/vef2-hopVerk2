@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import Image from 'next/image';
 import { useDispatch } from 'react-redux';
-import { logout } from '@/store/authSlice'; // Ensure this is correctly imported
+import { logout } from '@/store/authSlice';
 
 const Logout = () => {
   const router = useRouter();

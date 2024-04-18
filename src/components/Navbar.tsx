@@ -1,10 +1,11 @@
 'use client';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '@/store/authSlice'; 
+ 
 import React from 'react';
 import { RootState } from '@/store/types';
 import "@/styles/navbar.scss"
+import { useRouter } from 'next/navigation'
 
 type UserData = {
   userId: number;
@@ -20,10 +21,10 @@ const Navbar = () => {
 
   const isLoggedIn = Boolean(userData);
   console.log(userData, isLoggedIn); 
+  const router = useRouter();
 
   const handleLogout = () => {
-    <Link href="/logout">Logout</Link>
-    dispatch(logout()); 
+    router.push('/logout');
   };
 
   return (
