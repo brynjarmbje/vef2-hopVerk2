@@ -36,7 +36,7 @@ const SignupPage = () => {
       setAccountSuccess(true);
       setTimeout(() => {
         Router.push('/login');
-      }, 2000); 
+      }, 2000);
     } catch (err) {
       console.log('This is the error: ', err);
       setError('Signup failed, please try again.');
@@ -88,7 +88,8 @@ const SignupPage = () => {
           </button>
           {AccountSuccess && (
             <p className="success-message">
-              Account for {formData.name && formData.username } successfully created , Redirecting to Login Page . . .
+              Account for {formData.name && formData.username} successfully
+              created , Redirecting to Login Page . . .
             </p>
           )}
           {error && <p className="error-message">{error}</p>}
