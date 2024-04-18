@@ -2,6 +2,7 @@ import axios from 'axios';
 import '@/styles/movie.scss';
 import MoviePage from './stars/page';
 
+
 export async function generateStaticParams() {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/movies`
