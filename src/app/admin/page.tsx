@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter, redirect } from 'next/navigation';
-import React from 'react';
 
 type UserData = {
   userId: number;
