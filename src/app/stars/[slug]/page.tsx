@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Link from 'next/link';
-import '../../../styles/star.scss';
+import '@/styles/star.scss';
 import MoviePage from './movies/page';
 
 export async function generateStaticParams() {

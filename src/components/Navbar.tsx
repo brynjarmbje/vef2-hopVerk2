@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import '../styles/navbar.scss';
+import '@/styles/navbar.scss';
 
 type UserData = {
   userId: Number;
