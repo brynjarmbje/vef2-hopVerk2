@@ -27,3 +27,9 @@ Frontend: Built with Next.js, the frontend serves as the interface for users.
 Backend Connection: Connects to a backend hosted on Render.
 
 Our backend's database is hosted on render so it might take a while to cold start .
+
+
+Must be logged in as admin to post a movie, 
+
+Username : admin 
+password : adminpassword
