@@ -14,7 +14,13 @@ const nextConfig = {
     includePaths: [path.join(__dirname, '/src/styles')],
   },
   images: {
-    domains: ['res.cloudinary.com'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '**',
+      },
+    ],
   },
 };
 

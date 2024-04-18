@@ -5,6 +5,7 @@ import '@/styles/global.scss';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import Loadingsvg from '@/components/Loadingsvg';
+import React from 'react';
 
 export const metadata: Metadata = {
   title: 'Cinema App',
