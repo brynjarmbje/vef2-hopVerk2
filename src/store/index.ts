@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import { AuthState } from './types';
 
 export type RootState = {
-  auth: AuthState; 
+  auth: AuthState;
 };
 
 const rootReducer = combineReducers({
@@ -19,6 +19,9 @@ const persistConfig = {
 };
 
 // Explicitly type the return of persistReducer
-const persistedReducer = persistReducer<RootState, any>(persistConfig, rootReducer);
+const persistedReducer = persistReducer<RootState, any>(
+  persistConfig,
+  rootReducer
+);
 
 export default persistedReducer;

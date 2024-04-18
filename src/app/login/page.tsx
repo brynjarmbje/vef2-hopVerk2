@@ -18,7 +18,7 @@ interface LoginResponse {
 }
 
 const LoginPage = () => {
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch();
   useAuthRedirect();
   const router = useRouter(); // Initialize useRouter hook
   const [username, setUsername] = useState('');

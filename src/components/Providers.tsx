@@ -11,9 +11,9 @@ interface ProvidersProps {
 export function Providers({ children }: ProvidersProps) {
   return (
     <Provider store={store}>
-    <PersistGate loading={<Loadingsvg />} persistor={persistor}>
-      {children}
-    </PersistGate>
+      <PersistGate loading={<Loadingsvg />} persistor={persistor}>
+        {children}
+      </PersistGate>
     </Provider>
   );
 }

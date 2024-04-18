@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { logout } from '@/store/authSlice';
 import Loadingsvg from '@/components/Loadingsvg';
 
-
 const Logout = () => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -43,8 +42,7 @@ const Logout = () => {
   return (
     <div className="logout-container">
       <p>Logging out...</p>
-      <Loadingsvg
-      />
+      <Loadingsvg />
     </div>
   );
 };
