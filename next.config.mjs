@@ -22,7 +22,6 @@ const nextConfig = {
       },
     ],
   },
-
 };
 
 // Exporting the Next.js configuration object

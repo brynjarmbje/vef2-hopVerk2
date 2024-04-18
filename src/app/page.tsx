@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import React from 'react';
@@ -26,25 +26,24 @@ export default function Home() {
   }, []);
 
   return (
-        <div>
-          <h1>Welcome to Cinema App</h1>
-          {userData && (
-            <div className="user-info">
-              <p>Username: {userData.username}</p>
-              <p>Name: {userData.name}</p>
-              {userData.profilePicture && (
-                <Image
-                  src={userData.profilePicture}
-                  alt="Profile Picture"
-                  width={500}
-                  height={500}
-                  unoptimized={true} // Use this only if your images are not served from an optimized source
-                />
-              )}
-              {userData.isAdmin && <p>You have admin privileges.</p>}
-            </div>
+    <div>
+      <h1>Welcome to Cinema App</h1>
+      {userData && (
+        <div className="user-info">
+          <p>Username: {userData.username}</p>
+          <p>Name: {userData.name}</p>
+          {userData.profilePicture && (
+            <Image
+              src={userData.profilePicture}
+              alt="Profile Picture"
+              width={500}
+              height={500}
+              unoptimized={true} // Use this only if your images are not served from an optimized source
+            />
           )}
+          {userData.isAdmin && <p>You have admin privileges.</p>}
         </div>
-
+      )}
+    </div>
   );
 }

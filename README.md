@@ -1,8 +1,8 @@
 # Next.js Project
 
-This project is built using [Next.js](https://nextjs.org/), 
+This project is built using [Next.js](https://nextjs.org/),
 
-Backend : our h1 project 
+Backend : our h1 project
 
 ## Getting Started
 
