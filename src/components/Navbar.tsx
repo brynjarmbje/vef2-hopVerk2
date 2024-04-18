@@ -1,47 +1,49 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { usePathname } from 'next/navigation';
-import '@/styles/navbar.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '@/store/authSlice'; 
 import React from 'react';
+import { RootState } from '@/store/types';
+import "@/styles/navbar.scss"
 
 type UserData = {
-  userId: Number;
-  username: String;
-  name: String;
-  profilePicture: String;
-  isAdmin: Boolean;
+  userId: number;
+  username: string;
+  name: string;
+  profilePicture: string;
+  isAdmin: boolean;
 };
 
 const Navbar = () => {
-  const pathname = usePathname();
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const userData = useSelector((state: RootState) => state.auth.userData);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    const userDataString = localStorage.getItem('userData'); // Now inside useEffect, it runs client-side
-    if (userDataString) {
-      setUserData(JSON.parse(userDataString));
-    }
-  }, []); // The empty array ensures this runs once on component mount
+  const isLoggedIn = Boolean(userData);
+  console.log(userData, isLoggedIn); 
 
-  const isLoggedIn = Boolean(userData); // Checks if userData is not null or undefined
+  const handleLogout = () => {
+    <Link href="/logout">Logout</Link>
+    dispatch(logout()); 
+  };
 
   return (
+
     <nav className="navbar">
       <Link href="/">Home</Link>
       <Link href="/movies">Movies</Link>
       <Link href="/stars">Stars</Link>
       {isLoggedIn ? (
-        <>
-          <Link href="/logout">Logout</Link>
-          {userData?.isAdmin && <Link href="/admin">Admin</Link>}
-        </>
-      ) : (
-        <>
-          <Link href="/signup">Signup</Link>
-          <Link href="/login">Login</Link>
-        </>
-      )}
+  <>
+  
+    {userData?.isAdmin && <Link href="/admin">Admin</Link>}
+    <button className="button-45" role="button" onClick={handleLogout}>Logout</button>
+  </>
+) : (
+  <>
+    <Link href="/signup">Signup</Link>
+    <Link href="/login">Login</Link>
+  </>
+)}
     </nav>
   );
 };

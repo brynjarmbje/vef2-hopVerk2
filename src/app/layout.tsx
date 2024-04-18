@@ -3,9 +3,8 @@ import Navbar from '../components/Navbar';
 import '@/styles/global.scss';
 
 import { Metadata } from 'next';
-import { Suspense } from 'react';
-import Loadingsvg from '@/components/Loadingsvg';
 import React from 'react';
+import { Providers } from '@/components/Providers';
 
 export const metadata: Metadata = {
   title: 'Cinema App',
@@ -22,13 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+
     <html lang="en">
       <body>
+      <Providers>
         <Navbar />
-        <Suspense fallback={<Loadingsvg />}>
           <main>{children}</main>
-        </Suspense>
+        </Providers>
       </body>
     </html>
+
   );
 }

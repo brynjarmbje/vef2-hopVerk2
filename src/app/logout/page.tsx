@@ -4,15 +4,23 @@ import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
 import Image from 'next/image';
+import { useDispatch } from 'react-redux';
+import { logout } from '@/store/authSlice'; // Ensure this is correctly imported
 
 const Logout = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // Function to handle the logout process
     const handleLogout = async () => {
-      // Optional: Call your API to invalidate the session on the server side
-      axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/logout`);
+      try {
+        // Optional: Calling API to invalidate the session on the server side
+        await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/logout`);
+      } catch (error) {
+        console.error('Logout failed:', error);
+      }
+
+      dispatch(logout());
 
       // Remove user data from local storage (or cookie)
       localStorage.removeItem('token');
@@ -24,12 +32,12 @@ const Logout = () => {
         position: 'top-center',
       });
 
-      // Redirect to the home page or login page
+      // Redirect to the login page
       router.push('/login');
     };
 
     handleLogout();
-  }, [router]);
+  }, [dispatch, router]);
 
   return (
     <div className="logout-container">
